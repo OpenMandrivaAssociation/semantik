@@ -56,8 +56,8 @@ other free operating systems.
 %build
 ./waf configure --qtdir=%{qt4dir} --qtincludes=%{qt4include} \
 	--qtlibs=%{qt4lib} --qtbin=%{qt4dir}/bin \
-	--prefix=%{_prefix} --icons=%{_iconsdir}\
-%if %{_lib} != 'lib'
+	--prefix=%{_prefix} --icons=%{_iconsdir} \
+%if "%{_lib}" != "lib"
 	--use64
 %endif
 
