@@ -13,6 +13,7 @@ BuildRequires:          libxml2-utils
 BuildRequires:          desktop-file-utils
 BuildRequires:		imagemagick
 BuildRequires:		kdelibs-devel
+BuildRequires:		ocaml
 %py_requires -d
 Obsoletes:		kdissert
 Provides:		kdissert
@@ -55,11 +56,8 @@ other free operating systems.
 
 %build
 ./waf configure --qtdir=%{qt4dir} --qtincludes=%{qt4include} \
-	--qtlibs=%{qt4libs} --qtbin=%{qt4dir}/bin \
-	--prefix=%{_prefix} \
-%if "%{_lib}" == "lib64"
-	--libsuffix=64
-%endif
+	--qtlibs=%{qt4lib} --qtbin=%{qt4dir}/bin \
+	--prefix=%{_prefix}
 
 ./waf build
 
