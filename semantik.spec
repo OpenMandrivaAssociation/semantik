@@ -1,21 +1,17 @@
-%define version	        1.0.7
-%define release	        %mkrel 2
-
-Name:	                kdissert	        
-Summary:	        Mindmapping-like tool 
-Version:		%{version}
-Release:		%{release}
+Name:	                semantik
+Summary:	        Mindmapping-like tool
+Version:		0.5.3
+Release:		%mkrel 1
+Epoch:			1
 Group:		        Office
 License:		GPL
 URL:			http://freehackers.org/~tnagy/kdissert/index.html
-Source0:		http://freehackers.org/~tnagy/kdissert/%name-%version.tar.bz2
+Source0:		http://freehackers.org/~tnagy/%{name}-%{version}.tar.bz2
 BuildRoot:	        %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:		kdelibs-devel
+BuildRequires:		qt4-devel
 BuildRequires:          libxml2-utils 
 BuildRequires:          desktop-file-utils
-BuildRequires:          python-devel
-
-Requires:               kdebase-progs
+%py_requires -d
 
 %description
 kdissert is a mindmapping-like tool to help students to 
@@ -34,11 +30,11 @@ and businessmen.
 
 %files -f %{name}.lang
 %defattr(-,root,root)
-%{_bindir}/kdissert
+%{_bindir}/*
 
-%{_iconsdir}/kdissert.png
-%{_liconsdir}/kdissert.png
-%{_miconsdir}/kdissert.png
+%{_iconsdir}/*.png
+%{_liconsdir}/*.png
+%{_miconsdir}/*.png
 
 %{_datadir}/applnk/Utilities/%{name}.desktop
 %{_datadir}/mimelnk/application/x-%{name}.desktop
