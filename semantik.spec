@@ -13,6 +13,8 @@ BuildRequires:          libxml2-utils
 BuildRequires:          desktop-file-utils
 BuildRequires:		imagemagick
 %py_requires -d
+Obsoletes:		kdissert
+Provides:		kdissert
 
 %description
 Semantik (previously Kdissert) is a mindmapping-like tool to help
