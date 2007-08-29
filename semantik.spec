@@ -1,6 +1,6 @@
 Name:	                semantik
 Summary:	        Mindmapping-like tool
-Version:		0.5.3
+Version:		0.5.3a
 Release:		%mkrel 1
 Epoch:			1
 Group:		        Office
@@ -57,7 +57,10 @@ other free operating systems.
 %build
 ./waf configure --qtdir=%{qt4dir} --qtincludes=%{qt4include} \
 	--qtlibs=%{qt4lib} --qtbin=%{qt4dir}/bin \
-	--prefix=%{_prefix}
+	--prefix=%{_prefix} --icons=%{_iconsdir}\
+%if %{_lib} != 'lib'
+	--use64
+%endif
 
 ./waf build
 
