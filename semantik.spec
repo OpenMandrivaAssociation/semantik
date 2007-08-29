@@ -8,7 +8,7 @@ License:		QPL
 URL:			http://freehackers.org/~tnagy/semantik.html
 Source0:		http://freehackers.org/~tnagy/%{name}-%{version}.tar.bz2
 BuildRoot:	        %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:		qt4-devel
+BuildRequires:		qt4-devel qt4-linguist
 BuildRequires:          libxml2-utils 
 BuildRequires:          desktop-file-utils
 BuildRequires:		imagemagick
