@@ -108,17 +108,16 @@ and businessmen.
 %setup -q -n %name-%version
 
 %build
-%define __libtoolize /bin/true
-
-
-
+./waf configure --qtdir=%{qt4dir} --qtincludes=%{qt4include} \
+	--qtlibs=%{qt4libs} --qtbin=%{qt4dir}/bin \
+	--prefix=%{_prefix} \
 %if "%{_lib}" == "lib64"
-./waf configure --libsuffix=64
-%else
-./waf configure
+	--libsuffix=64
 %endif
 
-./waf
+./waf build --jobs=%{_smp_mflags}
+
+%install
 
 DESTDIR=$RPM_BUILD_ROOT ./waf  install
 
