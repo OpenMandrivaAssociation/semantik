@@ -12,7 +12,6 @@ BuildRequires:		qt4-devel
 BuildRequires:          libxml2-utils 
 BuildRequires:          desktop-file-utils
 BuildRequires:		imagemagick
-BuildRequires:		kdelibs-devel
 BuildRequires:		ocaml
 %py_requires -d
 Obsoletes:		kdissert
