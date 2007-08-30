@@ -1,6 +1,6 @@
 Name:	                semantik
 Summary:	        Mindmapping-like tool
-Version:		0.5.3a
+Version:		0.5.3b
 Release:		%mkrel 1
 Epoch:			1
 Group:		        Office
