@@ -1,10 +1,10 @@
 Name:	                semantik
 Summary:	        Mindmapping-like tool
-Version:		0.5.8
+Version:		0.6.0
 Release:		%mkrel 1
 Epoch:			1
 Group:		        Office
-License:		QPL
+License:		QPLv1
 URL:			http://freehackers.org/~tnagy/semantik.html
 Source0:		http://freehackers.org/~tnagy/%{name}-%{version}.tar.bz2
 BuildRoot:	        %{_tmppath}/%{name}-%{version}-%{release}-root
