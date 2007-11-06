@@ -9,7 +9,7 @@ URL:			http://freehackers.org/~tnagy/semantik.html
 Source0:		http://freehackers.org/~tnagy/%{name}-%{version}.tar.bz2
 Patch0:			semantik-0.6.0-kde4-config.patch
 BuildRoot:	        %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:		kdelibs4-common qt4-linguist
+BuildRequires:		kdegames4-devel kdebase4-devel qt4-linguist
 BuildRequires:          libxml2-utils 
 BuildRequires:          desktop-file-utils
 BuildRequires:		imagemagick
@@ -53,7 +53,7 @@ other free operating systems.
 
 %prep
 %setup -q -n %name-%version
-%patch0 -p0
+%patch0 -p0 -b  .orig
 
 %build
 ./waf configure --qtdir=%{qt4dir} --qtincludes=%{qt4include} \
