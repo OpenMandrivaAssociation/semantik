@@ -7,7 +7,6 @@ Group:		        Office
 License:		QPLv1
 URL:			http://freehackers.org/~tnagy/semantik.html
 Source0:		http://freehackers.org/~tnagy/%{name}-%{version}.tar.bz2
-Patch0:			semantik-0.6.0-kde4-config.patch
 BuildRoot:	        %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:		kdegames4-devel kdebase4-devel qt4-linguist
 BuildRequires:          libxml2-utils 
@@ -39,24 +38,23 @@ other free operating systems.
 %files
 %defattr(-,root,root)
 %doc README LICENSE.QPL
-%{_bindir}/%{name}
-%{_libdir}/libnablah.so
-
-%{_datadir}/%{name}
-
-%{_datadir}/pixmaps/%{name}.png
-%{_datadir}/applications/%{name}.desktop
-
-%{_iconsdir}/hicolor/*/apps/*.png
+%{_kde_bindir}/%{name}
+%{_kde_libdir}/libnablah.so
+%{_kde_datadir}/apps/%{name}
+%{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_kde_iconsdir}/*/*/*/*
 
 #--------------------------------------------------------------------
 
 %prep
 %setup -q -n %name-%version
-%patch0 -p0 -b  .orig
+#patch0 -p0 -b  .orig
 
 %build
-export PATH=%_kde_bindir;$PATH
+export PATH=%_kde_bindir:%qt4bin:$PATH
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export FFLAGS="%{optflags}"
 ./waf configure --qtdir=%{qt4dir} --qtincludes=%{qt4include} \
 	--qtlibs=%{qt4lib} --qtbin=%{qt4dir}/bin \
 	--prefix=%_kde_prefix --icons=%_kde_iconsdir \
@@ -69,20 +67,11 @@ export PATH=%_kde_bindir;$PATH
 %install
 ./waf install --destdir=%buildroot
 
-#icons
-install -D -m644 src/data/hi48-app-semantik.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
-install -D -m644 src/data/hi64-app-semantik.png %{buildroot}%{_iconsdir}/hicolor/64x64/apps/%{name}.png
-install -D -m644 src/data/hi22-app-semantik.png %{buildroot}%{_iconsdir}/hicolor/22x22/apps/%{name}.png
-
-mkdir -p %{buildroot}%{_iconsdir}/hicolor/{32x32,16x16}/apps
-convert -resize 32x32 src/data/hi64-app-semantik.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
-convert -resize 16x16 src/data/hi64-app-semantik.png %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
-
 # Menu Entry
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="Presentation" \
-  --dir $RPM_BUILD_ROOT%_datadir/applications/ $RPM_BUILD_ROOT%_datadir/applications/%{name}.desktop
+  --dir $RPM_BUILD_ROOT%_kde_datadir/applications/kde4/ $RPM_BUILD_ROOT%_kde_datadir/applications/kde4/%{name}.desktop
 
 %clean
 rm -rf $RPM_BUILD_ROOT
