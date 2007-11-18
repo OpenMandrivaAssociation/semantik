@@ -48,10 +48,11 @@ other free operating systems.
 
 %prep
 %setup -q -n %name-%version
-#patch0 -p0 -b  .orig
 
 %build
 export PATH=%_kde_bindir:%qt4bin:$PATH
+export KDEDIR=%_kde_prefix
+export KDEDIRS=%_kde_prefix
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 export FFLAGS="%{optflags}"
@@ -62,7 +63,7 @@ export FFLAGS="%{optflags}"
 	--use64
 %endif
 
-./waf build
+./waf build %(echo %_smp_mflags|sed -e 's/j/j /')
 
 %install
 ./waf install --destdir=%buildroot
