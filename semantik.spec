@@ -56,9 +56,10 @@ other free operating systems.
 %patch0 -p0 -b  .orig
 
 %build
+export PATH=%_kde_bindir;$PATH
 ./waf configure --qtdir=%{qt4dir} --qtincludes=%{qt4include} \
 	--qtlibs=%{qt4lib} --qtbin=%{qt4dir}/bin \
-	--prefix=%{_prefix} --icons=%{_iconsdir} \
+	--prefix=%_kde_prefix --icons=%_kde_iconsdir \
 %if "%{_lib}" != "lib"
 	--use64
 %endif
