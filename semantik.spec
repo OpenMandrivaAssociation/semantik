@@ -8,7 +8,6 @@ License:		QPLv1
 URL:			http://freehackers.org/~tnagy/semantik.html
 Source0:		http://freehackers.org/~tnagy/%{name}-%{version}.tar.bz2
 Patch0:			semantik-0.6.4-fix-desktop.patch
-BuildRoot:	        %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:		kdegames4-devel kdebase4-devel qt4-linguist
 BuildRequires:          libxml2-utils 
 BuildRequires:		imagemagick
