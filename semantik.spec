@@ -1,7 +1,7 @@
 Name:	                semantik
 Summary:	        Mindmapping-like tool
 Version:		0.6.4
-Release:		%mkrel 1
+Release:		%mkrel 2
 Epoch:			1
 Group:		        Office
 License:		QPLv1
@@ -13,6 +13,7 @@ BuildRequires:		kdegames4-devel kdebase4-devel qt4-linguist
 BuildRequires:          libxml2-utils 
 BuildRequires:		imagemagick
 BuildRequires:		ocaml
+Requires:		kdebase4-workspace
 %py_requires -d
 Obsoletes:		kdissert
 Provides:		kdissert
@@ -42,7 +43,9 @@ other free operating systems.
 %{_kde_libdir}/libnablah.so
 %{_kde_datadir}/apps/%{name}
 %{_kde_datadir}/applications/kde4/%{name}.desktop
+%{_datadir}/applications/%{name}.desktop
 %{_kde_iconsdir}/*/*/*/*
+%{_iconsdir}/hicolor/*/*/*
 
 #--------------------------------------------------------------------
 
@@ -68,6 +71,13 @@ export FFLAGS="%{optflags}"
 
 %install
 ./waf install --destdir=%buildroot
+
+# add wrapper for non-KDE4 DEs
+mkdir -p %buildroot%_datadir/applications
+mkdir -p %buildroot%_iconsdir
+sed -e 's|Exec=semantik|Exec=k4 semantik|' %buildroot%{_kde_datadir}/applications/kde4/%name.desktop > \
+	%buildroot%_datadir/applications/%name.desktop
+cp -fr %buildroot%_kde_iconsdir/hicolor %buildroot%_iconsdir
 
 %find_lang %name
 
