@@ -67,7 +67,7 @@ export FFLAGS="%{optflags}"
 	--use64
 %endif
 
-./waf build %(echo %_smp_mflags|sed -e 's/j/j /')
+./waf build 
 
 %install
 ./waf install --destdir=%buildroot
