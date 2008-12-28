@@ -60,12 +60,8 @@ other free operating systems.
 %patch0 -p0 -b .orig
 
 %build
-export PATH=%_kde_bindir:%qt4bin:$PATH
-export KDEDIR=%_kde_prefix
-export KDEDIRS=%_kde_prefix
-export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
-export FFLAGS="%{optflags}"
+export LINKFLAGS="%{ldflags}"
 ./waf configure --qtdir=%{qt4dir} --qtincludes=%{qt4include} \
 	--qtlibs=%{qt4lib} --qtbin=%{qt4dir}/bin \
 	--prefix=%_kde_prefix --icons=%_kde_iconsdir \
@@ -73,10 +69,13 @@ export FFLAGS="%{optflags}"
 	--use64
 %endif
 
-./waf build 
+./waf build
 
 %install
+rm -fr %buildroot
 ./waf install --destdir=%buildroot
+
+rm -fr %buildroot%_datadir/locale
 
 %find_lang %name
 
