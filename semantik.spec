@@ -1,6 +1,6 @@
 Name:	                semantik
 Summary:	        Mindmapping-like tool
-Version:		0.6.9
+Version:		0.7.2
 Release:		%mkrel 1
 Epoch:			1
 Group:		        Office
@@ -13,6 +13,7 @@ BuildRequires:          kdelibs4-devel
 BuildRequires:          libxml2-utils 
 BuildRequires:		imagemagick
 BuildRequires:		ocaml
+BuildRequires:		waf
 Requires:		kdebase4-workspace
 %py_requires -d
 Obsoletes:		kdissert
@@ -62,20 +63,21 @@ other free operating systems.
 %build
 export CXXFLAGS="%{optflags}"
 export LINKFLAGS="%{ldflags}"
-./waf configure --qtdir=%{qt4dir} --qtincludes=%{qt4include} \
+./waf configure \
+	--qtdir=%{qt4dir} --qtincludes=%{qt4include} \
 	--qtlibs=%{qt4lib} --qtbin=%{qt4dir}/bin \
 	--prefix=%_kde_prefix --icons=%_kde_iconsdir \
 %if "%{_lib}" != "lib"
 	--use64
 %endif
 
-./waf build
+%waf
 
 %install
 rm -fr %buildroot
-./waf install --destdir=%buildroot
+%waf_install
 
-rm -fr %buildroot%_datadir/locale
+#rm -fr %buildroot%_datadir/locale
 
 %find_lang %name
 
