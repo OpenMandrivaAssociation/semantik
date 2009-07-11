@@ -13,7 +13,6 @@ BuildRequires:          kdelibs4-devel
 BuildRequires:          libxml2-utils 
 BuildRequires:		imagemagick
 BuildRequires:		ocaml
-BuildRequires:		waf
 Requires:		kdebase4-runtime
 %py_requires -d
 Obsoletes:		kdissert
@@ -53,13 +52,11 @@ export LINKFLAGS="%{ldflags}"
 	--use64
 %endif
 
-%waf
+./waf build %_smp_mflags --want-rpath=0
 
 %install
 rm -fr %buildroot
-%waf_install
-
-#rm -fr %buildroot%_datadir/locale
+./waf install --destdir=%{buildroot}
 
 %find_lang %name
 
