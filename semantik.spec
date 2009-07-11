@@ -1,7 +1,7 @@
 Name:	                semantik
 Summary:	        Mindmapping-like tool
 Version:		0.7.2
-Release:		%mkrel 
+Release:		%mkrel 2
 Epoch:			1
 Group:		        Office
 License:		QPLv1
