@@ -1,7 +1,7 @@
 Name:	                semantik
 Summary:	        Mindmapping-like tool
 Version:		0.7.2
-Release:		%mkrel 1
+Release:		%mkrel 
 Epoch:			1
 Group:		        Office
 License:		QPLv1
@@ -14,7 +14,7 @@ BuildRequires:          libxml2-utils
 BuildRequires:		imagemagick
 BuildRequires:		ocaml
 BuildRequires:		waf
-Requires:		kdebase4-workspace
+Requires:		kdebase4-runtime
 %py_requires -d
 Obsoletes:		kdissert
 Provides:		kdissert
@@ -26,24 +26,6 @@ presentations, dissertations, thesis, reports. While targetted mostly
 at students, Kdissert can also help teachers, decision maker, engineers
 and businessmen. Semantik is also available exclusively for Linux and
 other free operating systems.
-
-%post
-%if %mdkversion < 200900
-%update_menus
-%update_icon_cache hicolor
-%endif
-%if %mdkversion < 200900
-/sbin/ldconfig
-%endif
-
-%postun
-%if %mdkversion < 200900
-%clean_menus
-%clean_icon_cache hicolor
-%endif
-%if %mdkversion < 200900
-/sbin/ldconfig
-%endif
 
 %files -f %name.lang
 %defattr(-,root,root)
