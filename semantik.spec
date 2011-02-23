@@ -1,13 +1,14 @@
 Name:	        semantik
 Summary:	    Mindmapping-like tool
 Version:		0.7.3
-Release:		%mkrel 1
+Release:		%mkrel 2
 Epoch:			1
 Group:		    Office
 License:		QPLv1
 URL:			http://freehackers.org/~tnagy/semantik.html
 Source0:		http://freehackers.org/~tnagy/%{name}-%{version}.tar.bz2
 Patch0:			semantik-0.6.4-fix-desktop.patch
+Patch1:			build_against_new_ocaml.patch
 BuildRoot:	    %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:  kdelibs4-devel
 BuildRequires:  libxml2-utils 
@@ -40,6 +41,7 @@ other free operating systems.
 %prep
 %setup -q -n %name-%version
 %patch0 -p0 -b .orig
+%patch1 -p0
 
 %build
 export CXXFLAGS="%{optflags}"
