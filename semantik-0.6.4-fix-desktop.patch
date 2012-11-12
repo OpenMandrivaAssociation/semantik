@@ -1,0 +1,17 @@
+--- src/data/semantik.desktop.orig	2007-11-27 01:39:56.000000000 +0100
++++ src/data/semantik.desktop	2007-11-30 07:19:52.000000000 +0100
+@@ -1,12 +1,12 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=Semantik
+ GenericName=Mind mapping software
+ GenericName[tr]=Zihin haritalama uygulaması
+ Type=Application
+ Terminal=false
+ Icon=semantik
++Exec=semantik
+ MimeType=application/x-semantik;
+ X-KDE-StartupNotify=true
+ X-DBUS-StartupType=Multi
+-Categories=Qt;KDE;Application;Office;
++Categories=Qt;KDE;Office;Presentation;
