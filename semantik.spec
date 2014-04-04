@@ -1,23 +1,21 @@
-Name:	        semantik
-Summary:	    Mindmapping-like tool
-Version:		0.7.3
-Release:		3
-Epoch:			1
-Group:		    Office
-License:		QPLv1
-URL:			http://freehackers.org/~tnagy/semantik.html
-Source0:		http://freehackers.org/~tnagy/%{name}-%{version}.tar.bz2
-Source1:		%{name}.rpmlintrc
-Patch0:			semantik-0.6.4-fix-desktop.patch
-Patch1:			build_against_new_ocaml.patch
-BuildRequires:  kdelibs4-devel
-BuildRequires:  libxml2-utils 
+Summary:	Mindmapping-like tool
+Name:		semantik
+Version:	0.8.4
+Release:	1
+Epoch:		1
+License:	GPLv3+
+Group:		Office
+Url:		http://code.google.com/p/semantik/
+Source0:	http://semantik.googlecode.com/files/semantik-%{version}.tar.bz2
+Source10:	%{name}.rpmlintrc
 BuildRequires:	imagemagick
-BuildRequires:	python-devel
-BuildRequires:	ocaml
-Requires:		kdebase4-runtime
-Obsoletes:		kdissert
-Provides:		kdissert
+BuildRequires:	libxml2-utils
+BuildRequires:	python-kde4
+BuildRequires:	waf
+BuildRequires:	kdelibs4-devel
+BuildRequires:	pkgconfig(python)
+Requires:	kdebase4-runtime
+Requires:	python-kde4
 
 %description
 Semantik (previously Kdissert) is a mindmapping-like tool to help
@@ -27,7 +25,7 @@ at students, Kdissert can also help teachers, decision maker, engineers
 and businessmen. Semantik is also available exclusively for Linux and
 other free operating systems.
 
-%files
+%files -f %{name}.lang
 %doc README
 %{_kde_bindir}/%{name}
 %{_kde_libdir}/libnablah.so
@@ -39,21 +37,23 @@ other free operating systems.
 
 %prep
 %setup -q
-%patch0 -p0 -b .orig
-%patch1 -p0
 
 %build
 export CXXFLAGS="%{optflags}"
 export LINKFLAGS="%{ldflags}"
-./waf configure \
-	--qtdir=%{qt4dir} --qtincludes=%{qt4include} \
-	--qtlibs=%{qt4lib} --qtbin=%{qt4dir}/bin \
-	--prefix=%_kde_prefix --icons=%_kde_iconsdir \
+waf configure \
+	--qtdir=%{qt4dir} \
+	--qtlibs=%{qt4lib} \
+	--qtbin=%{qt4dir}/bin \
+	--prefix=%{_kde_prefix} \
+	--icons=%{_kde_iconsdir} \
 %if "%{_lib}" != "lib"
 	--use64
 %endif
 
-./waf build %_smp_mflags --want-rpath=0
+waf build --verbose
 
 %install
-./waf install --destdir=%{buildroot}
+waf install --destdir=%{buildroot}
+
+%find_lang %{name}
