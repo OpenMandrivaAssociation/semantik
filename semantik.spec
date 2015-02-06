@@ -1,7 +1,7 @@
 Summary:	Mindmapping-like tool
 Name:		semantik
 Version:	0.8.4
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPLv3+
 Group:		Office
