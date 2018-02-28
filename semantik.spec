@@ -11,10 +11,10 @@ Group:		Office
 Url:		http://waf.io/semantik/
 Source0:	https://waf.io/semantik-%{version}.tar.bz2
 Source10:	%{name}.rpmlintrc
+Patch1:		semantik-1.0.2-py3.7.patch
 BuildRequires:	imagemagick
 BuildRequires:	libxml2-utils
-BuildRequires:	waf
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5WebEngineWidgets)
 BuildRequires:	cmake(Qt5Svg)
@@ -56,20 +56,21 @@ other free operating systems.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
 export CXXFLAGS="%{optflags}"
 export LINKFLAGS="%{ldflags}"
-python waf configure \
+python2 waf configure \
 	--qtdir=%{_libdir}/qt5 \
 	--qtlibs=%_qt5_libdir \
 	--qtbin=%_qt5_bindir \
 	--prefix=%{_kde5_prefix} \
 	--icons=%{_kde5_iconsdir} \
 
-python waf build --verbose
+python2 waf build --verbose
 
 %install
-python waf install --destdir=%{buildroot}
+python2 waf install --destdir=%{buildroot}
 
 %find_lang %{name}-d %{name} %{name}.lang
