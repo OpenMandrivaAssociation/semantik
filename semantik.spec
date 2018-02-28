@@ -64,8 +64,8 @@ python waf configure \
 	--qtdir=%{_libdir}/qt5 \
 	--qtlibs=%_qt5_libdir \
 	--qtbin=%_qt5_bindir \
-	--prefix=%{_kde_prefix} \
-	--icons=%{_kde_iconsdir} \
+	--prefix=%{_kde5_prefix} \
+	--icons=%{_kde5_iconsdir} \
 
 python waf build --verbose
 
