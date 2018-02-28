@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   semantik-0.9.4.tar.gz: 3917099ae9c4cf167875d2c81fd6fbe533bf17c0
+sources:
+  semantik-1.0.2.tar.bz2: b393c466ba1a31aab467cfed35f473fab40ac140
