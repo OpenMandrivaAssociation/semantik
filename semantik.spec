@@ -14,7 +14,8 @@ Source10:	%{name}.rpmlintrc
 Patch1:		semantik-1.0.2-py3.7.patch
 BuildRequires:	imagemagick
 BuildRequires:	libxml2-utils
-BuildRequires:	pkgconfig(python2)
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	python2
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5WebEngineWidgets)
 BuildRequires:	cmake(Qt5Svg)
