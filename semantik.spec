@@ -3,7 +3,7 @@
 
 Summary:	Mindmapping-like tool
 Name:		semantik
-Version:	1.0.2
+Version:	1.0.3
 Release:	1
 Epoch:		1
 License:	GPLv3+
@@ -73,5 +73,8 @@ python2 waf build --verbose
 
 %install
 python2 waf install --destdir=%{buildroot}
+
+#useless .so
+rm -f %{buildroot}/%{_kde5_libdir}/libsemantik.so
 
 %find_lang %{name}-d %{name} %{name}.lang
