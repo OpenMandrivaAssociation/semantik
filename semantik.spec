@@ -3,7 +3,7 @@
 
 Summary:	Mindmapping-like tool
 Name:		semantik
-Version:	1.0.3
+Version:	1.2.4
 Release:	1
 Epoch:		1
 License:	GPLv3+
@@ -11,7 +11,6 @@ Group:		Office
 Url:		http://waf.io/semantik/
 Source0:	https://waf.io/semantik-%{version}.tar.bz2
 Source10:	%{name}.rpmlintrc
-Patch1:		semantik-1.0.2-py3.7.patch
 BuildRequires:	imagemagick
 BuildRequires:	libxml2-utils
 BuildRequires:	pkgconfig(python3)
