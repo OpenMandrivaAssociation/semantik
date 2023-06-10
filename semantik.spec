@@ -3,7 +3,7 @@
 
 Summary:	Mindmapping-like tool
 Name:		semantik
-Version:	1.2.4
+Version:	1.2.10
 Release:	1
 Epoch:		1
 License:	GPLv3+
