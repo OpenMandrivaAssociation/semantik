@@ -8,7 +8,7 @@ Release:	1
 Epoch:		1
 License:	GPLv3+
 Group:		Office
-Url:		http://waf.io/semantik/
+Url:		https://waf.io/semantik/
 Source0:	https://waf.io/semantik-%{version}.tar.bz2
 Source10:	%{name}.rpmlintrc
 BuildRequires:	imagemagick
